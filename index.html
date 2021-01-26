@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <ul id="header">
+      <li>Library</li>
+      <li style="float: right">
+        <button class="open-button" onclick="openForm()">New Book</button>
+      </li>
+    </ul>
+    <div class="form-popup" id="myForm">
+      <form class="form-container">
+        <h1>Enter New Book</h1>
+        
+        <label for="title"><b>Title</b></label>
+        <input type="text" placeholder="Enter Title" name="title" required />
+
+        <label for="author"><b>Author</b></label>
+        <input type="text" placeholder="Enter Author" name="author" required />
+
+        <button type="button" onclick="addBookToLibrary();" class="btn">
+          Enter Book
+        </button>
+        <button type="button" class="btn cancel" onclick="closeForm()">
+          Close
+        </button>
+      </form>
+    </div>
+
+    <div id="main">
+      <div id="container">
+        <div class="book">
+          <img src="assets/chonc.jpg" alt="chonc of On Fire by Naomi Klein" />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>
