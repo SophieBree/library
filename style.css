@@ -10,22 +10,17 @@
 
 #container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 400px);
+    grid-template-columns: auto auto;
     gap: 1rem;
     width: 100%;
-    justify-content: space-around;
+    justify-content: start;
+    padding: 5px 20px 5px 20px;
 }
 
 .book {
     display: grid;
-    padding: 1.5rem;
+    padding: 5px 20px 5px 20px;
     border-radius: 1rem;
-}
-
-.book img {
-    justify-self: center;
-    width: 80%;
-    height: 80%;
 }
 
 .book p {
