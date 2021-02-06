@@ -1,53 +1,98 @@
-let myLibrary = [];
+ myLibrary = [];
 
-function Book(title, author) {
-    this.title = title
-    this.author = author
-    this.info = function() {
-        return `${title}, by ${author}`
-    }
+class Book {
+  constructor(id, title, author) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+    
+  }
 }
 
-const book1 = new Book('The Deficit Myth', 'Stephanie Kelton')
-myLibrary.push(book1.title, book1.author);
-
-
-
 function addBookToLibrary() {
-   /* make myLibrary empty at the start of the function */
-    myLibrary = [];
-    /* create the Book object and assign the book's title and author to the array */
-    let tempBook = Object.create(Book);
-    tempBook.title = document.querySelector('input[name="title"]');
-    tempBook.author = document.querySelector('input[name="author"]');
-    myLibrary.push(tempBook.title.value, tempBook.author.value);
-    /* declare container variables */
-    const titleContainer = document.querySelector('#titles');
-    const authorContainer = document.querySelector('#authors');
+  closeForm();
+  if (myLibrary.length === 0) {
+     bookid = 0;
+  } else {
+     bookid = myLibrary.length;
 
-    /* creating the divs that the books will go into */
-    let newBookTitleSlot = document.createElement('div');
-    let newBookAuthorSlot = document.createElement('div');
-    newBookTitleSlot.classList.add('book');
-    newBookAuthorSlot.classList.add('book');
-    /* creating the element for displaying the name and author of the book */
-    let newBookTitle = document.createElement('p');
-    newBookTitle.innerText = myLibrary[0];
-    let newBookAuthor = document.createElement('p');
-    newBookAuthor.innerText = myLibrary[1];
-
-    newBookTitleSlot.appendChild(newBookTitle);
-    newBookAuthorSlot.appendChild(newBookAuthor);
-    authorContainer.appendChild(newBookAuthorSlot);
-    titleContainer.appendChild(newBookTitleSlot);
-    
+  }
+   bookTitle = document.querySelector('input[name="title"]').value;
+   bookAuthor = document.querySelector('input[name="author"]').value;
+for (let i=0; i<myLibrary.length; i++) {
+  if (bookTitle === myLibrary[i].title) {
+    console.log("You already have this book!");
+    return null;
+  }
+}
+  newBook = new Book(bookid, bookTitle, bookAuthor);
+    myLibrary.push(newBook);
+    showBooks();
     console.log(myLibrary);
+
+
+document.querySelector(".addNewBook").remove();
+let addNewBook = document.createElement("div");
+addNewBook.classList.add("addNewBook");
+addNewBook.onclick = () => openForm();
+let addNewBookText = document.createElement("p");
+addNewBookText.innerText = "Add New Book...";
+
+addNewBook.appendChild(addNewBookText);
+document.querySelector("#books").appendChild(addNewBook);
+document.querySelector(".form-container").reset();
+
+}
+function showBooks() {
+  const bookContainer = document.querySelector("#books");
+  let newBookTitleSlot = document.createElement("div");
+  let newBookAuthorSlot = document.createElement("div");
+  newBookTitleSlot.dataset.id = bookid;
+  newBookAuthorSlot.dataset.id = bookid;
+  let deleteSlot = document.createElement('div');
+  deleteSlot.classList.add('delete');
+  deleteSlot.dataset.id = bookid;
+  deleteSlot.onclick = () => {
+    
+    if (newBookTitleSlot.dataset.id === deleteSlot.dataset.id) {
+      myLibrary.splice(deleteSlot.dataset.id, 1);
+      newBookTitleSlot.remove();
+      newBookAuthorSlot.remove();
+      deleteSlot.remove();
+      books = document.querySelectorAll('.title');
+      myLibrary.forEach((value, index) => {
+        myLibrary[index].id = index;
+      });
+      books.forEach((value, index) => {
+        books[index].dataset.id = index;
+      });
+      console.log("book deleted");
+      console.log(myLibrary);
+    }
+    
+    }
+    
+    
+  newBookTitleSlot.classList.add("title");
+  newBookAuthorSlot.classList.add("author");
+  let newBookTitle = document.createElement("p");
+  newBookTitle.innerText = bookTitle;
+  let newBookAuthor = document.createElement("p");
+  newBookAuthor.innerText = bookAuthor;
+  let deleteBook = document.createElement('p');
+  deleteBook.innerText = 'Delete';
+  newBookTitleSlot.appendChild(newBookTitle);
+  newBookAuthorSlot.appendChild(newBookAuthor);
+  deleteSlot.appendChild(deleteBook);
+  bookContainer.appendChild(newBookTitleSlot);
+  bookContainer.appendChild(newBookAuthorSlot);
+  bookContainer.appendChild(deleteSlot);
 }
 
 function openForm() {
-    document.getElementById("myForm").style.display = "block";
+  document.getElementById("myForm").style.display = "block";
 }
 
 function closeForm() {
-    document.getElementById("myForm").style.display = "none";
+  document.getElementById("myForm").style.display = "none";
 }

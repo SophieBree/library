@@ -4,14 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <ul id="header">
       <li>Library</li>
-      <li style="float: right">
-        <button class="open-button" onclick="openForm()">New Book</button>
-      </li>
     </ul>
     <div class="form-popup" id="myForm">
       <form class="form-container">
@@ -34,9 +31,12 @@
 
     <div id="main">
       <div id="container">
-        <div id="titles">Title</div>
-
-        <div id="authors">Author</div>
+        <div id="books">
+          <div class="title-header">Title</div>
+          <div class="author-header">Author</div>
+          <div class="delete-header"></div>
+          <div class="addNewBook" onclick="openForm();">Add New Book...</div>
+        </div>
       </div>
     </div>
   </body>
