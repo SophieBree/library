@@ -24,23 +24,30 @@
   padding-top: 20px;
 }
 
-#books {
+#library {
   display: grid;
   grid-template-columns: repeat(3, minmax(auto, auto));
   width: 100%;
   justify-content: start;
 }
 
-.title,
-.author,
-.addNewBook,
-.deleteButton {
+.book {
   display: grid;
-  border: 1px solid black;
+  grid-template-rows: repeat(5, minmax(auto, auto));
+  grid-template-columns: 250px;
+  width: 100%;
+  justify-content: start;
 }
 
+.title,
+.author,
 .deleteButton {
+  display: grid;
+}
+
+.delete {
   cursor: pointer;
+  justify-self: end;
 }
 
 .title p,
@@ -49,7 +56,9 @@
 }
 
 .addNewBook {
-  grid-column: 1 / span 2;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 
 .addNewBook:hover {
