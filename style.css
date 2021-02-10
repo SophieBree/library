@@ -26,7 +26,7 @@
 
 #library {
   display: grid;
-  grid-template-columns: repeat(3, minmax(auto, auto));
+  grid-template-columns: repeat(5, minmax(auto, auto));
   width: 100%;
   justify-content: start;
 }
@@ -37,16 +37,23 @@
   grid-template-columns: 250px;
   width: 100%;
   justify-content: start;
+  border: 1px solid black;
 }
 
 .title,
 .author,
-.deleteButton {
+.publisher,
+.delete {
   display: grid;
+  padding: 10px;
 }
 
 .delete {
   cursor: pointer;
+  justify-self: end;
+}
+
+.hasReadCheckbox {
   justify-self: end;
 }
 
@@ -57,12 +64,13 @@
 
 .addNewBook {
   position: fixed;
-  bottom: 0;
-  right: 0;
+  bottom: 0px;
+  right: 0px;
+
 }
 
+
 .addNewBook:hover {
-  background-color: #dadce0;
   cursor: pointer;
 }
 

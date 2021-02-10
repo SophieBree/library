@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+
   </head>
   <body>
     <ul id="header">
@@ -13,14 +14,16 @@
     <div class="form-popup" id="myForm">
       <form class="form-container">
         <h1>Enter New Book</h1>
-
         <label for="title"><b>Title</b></label>
         <input type="text" placeholder="Enter Title" name="title" required />
 
         <label for="author"><b>Author</b></label>
         <input type="text" placeholder="Enter Author" name="author" required />
 
-        <button type="button" onclick="addBookToLibrary();" class="btn">
+        <label for="publisher"><b>Publisher</b></label>
+        <input type="text" placeholder="Enter Publisher" name="publisher"  />
+
+        <button type="submit" onclick="addBookToLibrary();" class="btn">
           Enter Book
         </button>
         <button type="button" class="btn cancel" onclick="closeForm()">
@@ -33,8 +36,9 @@
       <div id="container">
         <div id="library"></div>
       </div>
-      <div class="addNewBook" onclick="openForm();">Add New Book...</div>
+      <div class="addNewBook" onclick="openForm();">Add Book</div>
     </div>
   </body>
   <script src="app.js"></script>
+
 </html>
