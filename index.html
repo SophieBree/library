@@ -3,14 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Library</title>
     <link rel="stylesheet" href="style.css" />
 
   </head>
   <body>
-    <ul id="header">
-      <li>Library</li>
-    </ul>
+    <div id="header">
+        <div onclick=openBookList(); id="home"><h1>Library</h1></div>
+        <div onclick=openForm(); id="new-book"><h2>New Book</h2></div>
+        <div onclick=openPinned(); id="pinned-books"><h2>Pinned Books</h2></div>
+        <div onclick=openRead(); id="read-books"><h2>Read Books</h2></div>
+    </div>
+    
+    <hr>
     <div class="form-popup" id="myForm">
       <form class="form-container">
         <h1>Enter New Book</h1>
@@ -23,7 +28,7 @@
         <label for="publisher"><b>Publisher</b></label>
         <input type="text" placeholder="Enter Publisher" name="publisher"  />
 
-        <button type="submit" onclick="addBookToLibrary();" class="btn">
+        <button type="button" onclick="addBookToLibrary();" class="btn">
           Enter Book
         </button>
         <button type="button" class="btn cancel" onclick="closeForm()">
@@ -34,10 +39,10 @@
 
     <div id="main">
       <div id="container">
-        <div id="library"></div>
+        <div id="library">
       </div>
-      <div class="addNewBook" onclick="openForm();">Add Book</div>
-    </div>
+      </div>
+
   </body>
   <script src="app.js"></script>
 
