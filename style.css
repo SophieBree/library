@@ -165,7 +165,7 @@ body {
     padding-left: 3px;
 }
 
-#readbuttonslot {
+.read-button-slot {
     justify-self: end;
 }
 
