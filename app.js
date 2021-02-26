@@ -191,11 +191,7 @@ function showBook(index) {
   let readCheckbox = document.createElement("input");
   readCheckbox.type = "checkbox";
   readCheckbox.name = "read";
-  if (myLibrary[index].read === true) {
-    readCheckbox.checked = true;
-  } else {
-    readCheckbox.checked = false;
-  }
+
 
   readCheckbox.onchange = () => {
     readCheckbox.checked === true
@@ -229,9 +225,14 @@ function showBook(index) {
         }
 
         if (myLibrary[index].read === true) {
+          
           books[index].classList.add('read');
         } else {
           books[index].classList.remove('read');
+        }
+
+        if (books[index].classList.contains('read')) {
+          books[index].childNodes[6].childNodes[1].checked = true;
         }
       })
   })
