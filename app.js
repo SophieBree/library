@@ -154,35 +154,19 @@ function showBook(index) {
   pinButton.appendChild(pinImg);
   
   pinButton.onclick = () => {
-    if (myLibrary[index] === undefined) {
-      if (newBook.pinned === false) {
-        newBook.pinned = true;
-        pinButton.parentElement.classList.add("pinned");
-        pinButton.style.backgroundColor = "green";
-        localStorage.setItem("books", JSON.stringify(myLibrary));
-        console.log(myLibrary);
-      } else {
-        newBook.pinned = false;
-        pinButton.parentElement.classList.remove("pinned");
-        pinButton.style.backgroundColor = "";
-        localStorage.setItem("books", JSON.stringify(myLibrary));
-        console.log(myLibrary);
-      }
-  } else {
-    if (myLibrary[index].pinned === false) {
-      myLibrary[index].pinned = true;
+    if (myLibrary[pinButton.parentElement.dataset.id - 1].pinned === false) {
+      myLibrary[pinButton.parentElement.dataset.id - 1].pinned = true;
       pinButton.parentElement.classList.add("pinned");
       pinButton.style.backgroundColor = "green";
       localStorage.setItem("books", JSON.stringify(myLibrary));
       console.log(myLibrary);
     } else {
-      myLibrary[index].pinned = false;
+      myLibrary[pinButton.parentElement.dataset.id - 1].pinned = false;
       pinButton.parentElement.classList.remove("pinned");
       pinButton.style.backgroundColor = "";
       localStorage.setItem("books", JSON.stringify(myLibrary));
       console.log(myLibrary);
     }
-  }
 }
 
   let readButtonSlot = document.createElement("div");
