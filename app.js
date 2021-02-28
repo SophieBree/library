@@ -71,6 +71,9 @@ function addBookToLibrary() {
 function showBook(index) {
   let newBookSlot = document.createElement("div");
   newBookSlot.classList.add("book");
+  if (document.querySelector('#library').classList.contains('library-list')) {
+    newBookSlot.classList.add('list');
+  }
   let books = document.querySelectorAll(".book");
   myLibrary[index] === undefined
     ? (newBookSlot.dataset.id = myLibrary.length)
@@ -93,27 +96,32 @@ function showBook(index) {
     : (deleteButton.dataset.id = myLibrary[index].id);
 
   deleteButton.onclick = () => {
-    myLibrary.splice(deleteButton.dataset.id - 1, 1);
-    newBookSlot.remove();
-
-    myLibrary.forEach((value, index) => {
-      myLibrary[index].id = index + 1;
-      console.log(myLibrary)
-    });
-    let books = document.querySelectorAll(".book");
-    books.forEach((value, index) => {
-      books[index].dataset.id = index + 1;
-    });
-    let deleteButtons = document.querySelectorAll(".delete");
-    deleteButtons.forEach((value, index) => {
-      deleteButtons[index].dataset.id = index + 1;
-    });
-    let idNumbers = document.querySelectorAll(".id-number");
-    idNumbers.forEach((value, index) => {
-      idNumbers[index].dataset.id = index + 1;
-      idNumbers[index].innerText = idNumbers[index].dataset.id;
-    });
-    localStorage.setItem("books", JSON.stringify(myLibrary));
+    if (confirm('Are you sure you want to delete this book?')) {
+      myLibrary.splice(deleteButton.dataset.id - 1, 1);
+      newBookSlot.remove();
+  
+      myLibrary.forEach((value, index) => {
+        myLibrary[index].id = index + 1;
+        console.log(myLibrary)
+      });
+      let books = document.querySelectorAll(".book");
+      books.forEach((value, index) => {
+        books[index].dataset.id = index + 1;
+      });
+      let deleteButtons = document.querySelectorAll(".delete");
+      deleteButtons.forEach((value, index) => {
+        deleteButtons[index].dataset.id = index + 1;
+      });
+      let idNumbers = document.querySelectorAll(".id-number");
+      idNumbers.forEach((value, index) => {
+        idNumbers[index].dataset.id = index + 1;
+        idNumbers[index].innerText = idNumbers[index].dataset.id;
+      });
+      localStorage.setItem("books", JSON.stringify(myLibrary));
+    } else {
+      null;
+    }
+    
   };
 
   newBookSlot.appendChild(idNumber);
@@ -260,6 +268,14 @@ function openRead() {
   read.forEach((value, index) => {
     read[index].style.display = "grid";
   });
+}
+
+function listView() {
+  document.querySelector('#library').classList.toggle('library-list')
+  let books = document.querySelectorAll('.book');
+  books.forEach((value, index) => {
+    books[index].classList.toggle('list')
+  })
 }
 
 function pullFromStorage() {
