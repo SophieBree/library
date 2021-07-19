@@ -1,12 +1,7 @@
-# Library App
-This is a portfolio project to showcase my skills as a developer, but also to provide a useful utility for those wishing to track their books. The app offers:
+# Front-end Library App
 
-1. Easy, vibrant card based design for your book collection
-2. Pin books to access them later in the 'Pinned Books' menu
-3. Mark books as read so you keep track of your reading
-
-Upcoming features/changes:
-
-- Optimised site for mobile
-- Edit button for books
-- Minor design tweaks
+## Main Points
+This was an independent project to test my skills in HTML, CSS, and JavaScript. The project is a basic library app that allows users to add books, pin them, and mark them as read.
+It also lets the user see a filtered view of only the books they have pinned, read, or both.
+I tested my CSS and JavaScript knowledge when creating this by adding a button to toggle the book view between list and grid.
+The app also saves the books, as well as their read/pinned status in localStorage.
